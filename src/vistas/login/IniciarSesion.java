@@ -173,7 +173,7 @@ public class IniciarSesion extends javax.swing.JFrame {
 Login item = new Login();
     item.getNombreDeUsuario(IniciarSesion.txtUsuario);
             
-       if (){
+       if(){
 
             //ViewManager.changeViem(new ViewManager());
             Bienvenido miBienvenido = new Bienvenido();
