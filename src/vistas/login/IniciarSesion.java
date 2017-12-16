@@ -5,6 +5,7 @@
  */
 package vistas.login;
 
+import Main.ViewManager;
 import Servicios.login.ServicioUsuario;
 import Servicios.login.ServicioUsuarioImpl;
 
@@ -118,7 +119,6 @@ public class IniciarSesion extends javax.swing.JFrame {
         txtUsuario.setBackground(new java.awt.Color(0, 51, 102));
         txtUsuario.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
         txtUsuario.setForeground(new java.awt.Color(153, 153, 153));
-        txtUsuario.setText("ingrese su usuario");
         txtUsuario.setBorder(null);
         txtUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -134,7 +134,6 @@ public class IniciarSesion extends javax.swing.JFrame {
 
         txtContraseña.setBackground(new java.awt.Color(0, 51, 102));
         txtContraseña.setForeground(new java.awt.Color(153, 153, 153));
-        txtContraseña.setText("2134124141124");
         txtContraseña.setBorder(null);
         txtContraseña.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -170,18 +169,25 @@ public class IniciarSesion extends javax.swing.JFrame {
 
 
     private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
-Login item = new Login();
-    item.getNombreDeUsuario(IniciarSesion.txtUsuario);
-            
-       if(){
+        if (txtUsuario.getText().equals("") || txtContraseña.getText().equals("")) {
 
-            //ViewManager.changeViem(new ViewManager());
-            Bienvenido miBienvenido = new Bienvenido();
-            miBienvenido.setVisible(true);
-            dispose();
-            //this.setVisible(false);
+            JOptionPane.showMessageDialog(this, "Campos Vacios");
+
         } else {
-            JOptionPane.showMessageDialog(this, "Usuario o Contraseña Incorrecta", "ERROR", JOptionPane.ERROR_MESSAGE);
+
+            if (inicio.Iniciar(txtUsuario.getText().toLowerCase().trim(), txtContraseña.getText().toLowerCase().trim())) {
+
+                Bienvenido miBienvenido = new Bienvenido();
+                miBienvenido.setVisible(true);
+                dispose();
+                //this.setVisible(false);
+            } else {
+                 if (txtUsuario.getText().equals("") || txtContraseña.getText().equals("")){
+                     }else{
+                             
+                JOptionPane.showMessageDialog(this, "Usuario o Contraseña Incorrecta");
+            }
+        }
         }
     }//GEN-LAST:event_btnInicioActionPerformed
 

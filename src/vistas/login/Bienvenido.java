@@ -5,17 +5,24 @@
  */
 package vistas.login;
 
+import Servicios.login.ServicioUsuario;
+import Servicios.login.ServicioUsuarioImpl;
+import java.util.List;
+import java.util.Vector;
+import javax.swing.table.DefaultTableModel;
+import modelo.login.Login;
+
 /**
  *
  * @author fede_
  */
 public class Bienvenido extends javax.swing.JFrame {
-
-    /**
-     * Creates new form Bienvenido
-     */
+private final ServicioUsuario inicio;
+    private List<Login> admin;
+     
     public Bienvenido() {
         initComponents();
+        inicio = new ServicioUsuarioImpl();
         this.setLocationRelativeTo(null);//SIRVE PARA QUE APARESCA EN EL CENTRO LA VENTANA
     }
 
@@ -28,12 +35,47 @@ public class Bienvenido extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTextField1 = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jList2 = new javax.swing.JList();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jList3 = new javax.swing.JList();
+        jLabel6 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         lblBienvenido = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         btnVolver = new javax.swing.JButton();
         btnSiguiente = new javax.swing.JButton();
+
+        jTextField1.setText("jTextField1");
+
+        jList1.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(jList1);
+
+        jList2.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane2.setViewportView(jList2);
+
+        jList3.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane3.setViewportView(jList3);
+
+        jLabel6.setText("|");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -46,10 +88,23 @@ public class Bienvenido extends javax.swing.JFrame {
         lblBienvenido.setText("Bienvenido ");
         jPanel1.add(lblBienvenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, -1, -1));
 
-        jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 48)); // NOI18N
+        jLabel1.setBackground(new java.awt.Color(204, 204, 204));
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 0, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel1.setText("USUARIO");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 80, -1, -1));
+        jLabel1.setText("Usuario");
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLabel1.setFocusable(false);
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, -1, -1));
+
+        jLabel2.setBackground(new java.awt.Color(204, 204, 204));
+        jLabel2.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel2.setText("O  O");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 10, 30, 20));
+
+        jLabel3.setBackground(new java.awt.Color(204, 204, 204));
+        jLabel3.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel3.setText("|___|");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 30, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 220));
 
@@ -115,15 +170,24 @@ public class Bienvenido extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnVolverActionPerformed
 
-   
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSiguiente;
     private javax.swing.JButton btnVolver;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JList jList1;
+    private javax.swing.JList jList2;
+    private javax.swing.JList jList3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lblBienvenido;
     // End of variables declaration//GEN-END:variables
 }

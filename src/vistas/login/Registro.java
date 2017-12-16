@@ -254,30 +254,19 @@ public class Registro extends javax.swing.JFrame {
     }//GEN-LAST:event_txtApellidoActionPerformed
 
     private void btnRegistroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistroMouseClicked
-      if(txtNombre.getText().equals("") ||txtApellido.getText().equals("")||txtContraseña.getText().equals("")||txtNombreDeUsuario.getText().equals("")){
-           JOptionPane.showMessageDialog(this, "Campos Vacios, Llenelos para seguir ","ERROR",JOptionPane.ERROR_MESSAGE);
+       if(txtNombre.getText().equals("") ||txtApellido.getText().equals("")||txtContraseña.getText().equals("")||txtNombreDeUsuario.getText().equals("")){
+           JOptionPane.showMessageDialog(this, "Campos Vacios ");
        }else{
         
         if (btncasilla.isSelected() == true) {
             JOptionPane.showMessageDialog(this, "Usted se a registrado correctamente", "Registro", JOptionPane.INFORMATION_MESSAGE);
             String nombre = txtNombre.getText().trim();
-            String contraseña = BCrypt.hashpw(txtContraseña.getPassword().toString(), BCrypt.gensalt(12));
+            String contraseña = BCrypt.hashpw(String.valueOf(txtContraseña.getPassword()), BCrypt.gensalt(12));
             String nombreDeUsuario = txtNombreDeUsuario.getText().trim();
             String apellido = txtApellido.getText().trim();
 
             Login item = new Login(nombre, apellido, nombreDeUsuario, contraseña);
 
-            try {
-                int addUsuarios = LoginControlador.addUsuarios(item);
-
-                if (addUsuarios > 0) {
-                    JOptionPane.showMessageDialog(rootPane, "Registro exitoso!");
-                }
-            } catch (ClassNotFoundException | SQLException e) {
-                e.printStackTrace();
-            } finally {
-
-            }
             IniciarSesion V = new IniciarSesion();
 
             V.setVisible(true);
@@ -288,7 +277,7 @@ public class Registro extends javax.swing.JFrame {
             item.setContraseña(this.txtContraseña.getText());
             item.setNombreDeUsuario(this.txtNombreDeUsuario.getText());
         } else {
-            JOptionPane.showMessageDialog(this, "Casilla no marcada", "ERROR", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Casilla no marcada");
         }
       }
         /*
