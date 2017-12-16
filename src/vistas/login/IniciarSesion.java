@@ -5,12 +5,10 @@
  */
 package vistas.login;
 
-import Main.ViewManager;
 import Servicios.login.ServicioUsuario;
 import Servicios.login.ServicioUsuarioImpl;
 
 import javax.swing.JOptionPane;
-import modelo.login.Login;
 
 public class IniciarSesion extends javax.swing.JFrame {
 
@@ -69,7 +67,7 @@ public class IniciarSesion extends javax.swing.JFrame {
                 btnSalirMouseClicked(evt);
             }
         });
-        jPanel2.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, 90, 30));
+        jPanel2.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 100, 30));
 
         btnRegistar.setBackground(new java.awt.Color(0, 153, 204));
         btnRegistar.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N

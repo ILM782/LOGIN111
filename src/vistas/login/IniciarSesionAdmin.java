@@ -8,6 +8,8 @@ package vistas.login;
 import Servicios.login.ServicioAdmin;
 import Servicios.login.ServicioAdminImpl;
 import javax.swing.JOptionPane;
+import static vistas.login.IniciarSesion.txtContraseña;
+import static vistas.login.IniciarSesion.txtUsuario;
 
 /**
  *
@@ -68,6 +70,7 @@ public class IniciarSesionAdmin extends javax.swing.JFrame {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblUsuario.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        lblUsuario.setForeground(new java.awt.Color(102, 102, 102));
         lblUsuario.setText("USUARIO");
         jPanel2.add(lblUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, -1, 20));
 
@@ -101,6 +104,7 @@ public class IniciarSesionAdmin extends javax.swing.JFrame {
         jPanel2.add(btnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 160, 90, 30));
 
         lblContraseña.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        lblContraseña.setForeground(new java.awt.Color(102, 102, 102));
         lblContraseña.setText("CONTRASEÑA");
         jPanel2.add(lblContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, -1, 30));
 
@@ -114,7 +118,6 @@ public class IniciarSesionAdmin extends javax.swing.JFrame {
 
         txtUsuario.setBackground(new java.awt.Color(255, 204, 0));
         txtUsuario.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
-        txtUsuario.setText("ingrese su usuario");
         txtUsuario.setBorder(null);
         txtUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -129,11 +132,15 @@ public class IniciarSesionAdmin extends javax.swing.JFrame {
         jPanel2.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 240, 20));
 
         txtContraseña.setBackground(new java.awt.Color(255, 204, 0));
-        txtContraseña.setText("ingrese su contraseña");
         txtContraseña.setBorder(null);
         txtContraseña.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtContraseñaMouseClicked(evt);
+            }
+        });
+        txtContraseña.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtContraseñaActionPerformed(evt);
             }
         });
         jPanel2.add(txtContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 240, 20));
@@ -160,26 +167,36 @@ public class IniciarSesionAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirMouseClicked
 
     private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
+        if (txtUsuario.getText().equals("") || txtContraseña.getText().equals("")) {
 
+            JOptionPane.showMessageDialog(this, "Campos Vacios");
+
+        } else {
+        
         if (servicioAdmin.ValidarAdmin(txtUsuario.getText().toLowerCase(), txtContraseña.getText().toLowerCase())) {
             //ViewManager.changeViem(new ViewManager());
             BienvenidoAdmin miBienvenidoAdmin = new BienvenidoAdmin();
             miBienvenidoAdmin.setVisible(true);
             dispose();
             //this.setVisible(false);
-        } else {
-            JOptionPane.showMessageDialog(this, "Usuario o Contraseña Incorrecta", "ERROR", JOptionPane.ERROR_MESSAGE);
+             } else {
+         if (txtUsuario.getText().equals("") || txtContraseña.getText().equals("")){
+                     }else{
+                             
+                JOptionPane.showMessageDialog(this, "Usuario o Contraseña Incorrecta");
+            }
+        }
         }
     }//GEN-LAST:event_btnInicioActionPerformed
 
     private void txtUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtUsuarioMouseClicked
         // TODO add your handling code here:
-         txtUsuario.setText(""); //SIRVE PARA PODER ESCRIBIR SINO NO TE DEJA LA BARRA
+        txtUsuario.setText(""); //SIRVE PARA PODER ESCRIBIR SINO NO TE DEJA LA BARRA
     }//GEN-LAST:event_txtUsuarioMouseClicked
 
     private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
         // TODO add your handling code here: 
-       
+
     }//GEN-LAST:event_txtUsuarioActionPerformed
 
     private void txtContraseñaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtContraseñaMouseClicked
@@ -200,12 +217,15 @@ public class IniciarSesionAdmin extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnInicioMouseClicked
 
+    private void txtContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContraseñaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtContraseñaActionPerformed
+
     /**
      * @param args the command line arguments
      */
- 
     private final ServicioAdmin servicioAdmin;
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnInicio;
     private javax.swing.JButton btnSalir;
