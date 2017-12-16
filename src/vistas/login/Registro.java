@@ -11,6 +11,7 @@ import controlador.login.LoginControlador;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import modelo.login.Login;
+import org.hibernate.exception.ConstraintViolationException;
 import org.mindrot.jbcrypt.BCrypt;
 
 /**
@@ -254,32 +255,38 @@ public class Registro extends javax.swing.JFrame {
     }//GEN-LAST:event_txtApellidoActionPerformed
 
     private void btnRegistroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistroMouseClicked
-       if(txtNombre.getText().equals("") ||txtApellido.getText().equals("")||txtContraseña.getText().equals("")||txtNombreDeUsuario.getText().equals("")){
-           JOptionPane.showMessageDialog(this, "Campos Vacios ");
-       }else{
-        
-        if (btncasilla.isSelected() == true) {
-            JOptionPane.showMessageDialog(this, "Usted se a registrado correctamente", "Registro", JOptionPane.INFORMATION_MESSAGE);
-            String nombre = txtNombre.getText().trim();
-            String contraseña = BCrypt.hashpw(String.valueOf(txtContraseña.getPassword()), BCrypt.gensalt(12));
-            String nombreDeUsuario = txtNombreDeUsuario.getText().trim();
-            String apellido = txtApellido.getText().trim();
-
-            Login item = new Login(nombre, apellido, nombreDeUsuario, contraseña);
-
-            IniciarSesion V = new IniciarSesion();
-
-            V.setVisible(true);
-            dispose();
-            servicioUsuario.save(item);
-            item.setNombre(this.txtNombre.getText());
-            item.setApellido(this.txtApellido.getText());
-            item.setContraseña(this.txtContraseña.getText());
-            item.setNombreDeUsuario(this.txtNombreDeUsuario.getText());
+        if (txtNombre.getText().equals("") || txtApellido.getText().equals("") || txtContraseña.getText().equals("") || txtNombreDeUsuario.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Campos Vacios ");
         } else {
-            JOptionPane.showMessageDialog(this, "Casilla no marcada");
+
+            if (btncasilla.isSelected() == true) {
+
+                String nombre = txtNombre.getText().trim();
+                String contraseña = BCrypt.hashpw(String.valueOf(txtContraseña.getPassword()), BCrypt.gensalt(12));
+                String nombreDeUsuario = txtNombreDeUsuario.getText().trim();
+                String apellido = txtApellido.getText().trim();
+
+                try {
+                    Login item = new Login(nombre, apellido, nombreDeUsuario, contraseña);
+                    servicioUsuario.save(item);
+                    JOptionPane.showMessageDialog(this, "Usted se a registrado correctamente", "Registro", JOptionPane.INFORMATION_MESSAGE);
+
+                  /*  item.setNombre(this.txtNombre.getText());
+                    item.setApellido(this.txtApellido.getText());
+                    item.setContraseña(this.txtContraseña.getText());
+                    item.setNombreDeUsuario(this.txtNombreDeUsuario.getText());*/
+                    IniciarSesion V = new IniciarSesion();
+
+                    V.setVisible(true);
+                    dispose();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(this, "Ya existe el usuario", "Registro", JOptionPane.INFORMATION_MESSAGE);
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(this, "Casilla no marcada");
+            }
         }
-      }
         /*
          JOptionPane.showMessageDialog(this, "Usted se a registrado correctamente", "Registro", JOptionPane.INFORMATION_MESSAGE);
          Login item = new Login();
